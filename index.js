@@ -13,16 +13,17 @@ router.get( '/', function( req, res ) {
     res.json({
       message: 'hello!'
     })
-  }, 5000 )
+  }, 2000 )
 })
 
 router.post( '/', function( req, res ) {
-  console.log( 'post' )
+  console.log( 'post', req.headers )
+  var delay = parseInt( req.headers.delay )
   setTimeout( function() {
     res.json({
       message: 'hello!'
     })
-  }, 5000 )
+  }, delay )
 })
 
 app.use( '/', router )
